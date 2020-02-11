@@ -17,8 +17,32 @@ class ListNode(object):
         self.next = None
 
 
-def mergeTwoLists(self, l1, l2):
+def mergeTwoLists1(self, l1, l2):
     """
+    迭代法，28ms
+    :type l1: ListNode
+    :type l2: ListNode
+    :rtype: ListNode
+    """
+    # l1, l2均为非空链表
+    result = ListNode(0)
+    temp = result
+    while l1 and l2:
+        if l1.val <= l2.val:
+            temp.next = l1
+            l1 = l1.next
+        else:
+            temp.next = l2
+            l2 = l2.next
+        temp = temp.next
+    # l1, l2存在空链表
+    temp.next = l1 if l1 else l2
+    return result.next
+
+
+def mergeTwoLists2(self, l1, l2):
+    """
+    迭代法，16ms
     :type l1: ListNode
     :type l2: ListNode
     :rtype: ListNode
@@ -27,23 +51,24 @@ def mergeTwoLists(self, l1, l2):
     if not l1 and not l2:
         return None
 
-    # l1, l2中有非空表
     result = ListNode(0)
     temp = result
     while l1 or l2:
+        # 直接加 l1
         if l1 and not l2:
             temp.next = l1
             break
+        # 直接加 l2
         elif not l1 and l2:
             temp.next = l2
             break
+        # 加 l1 和 l2 中较小的数
         else:
             if l1.val <= l2.val:
                 temp.next = l1
                 l1 = l1.next
-                temp = temp.next
             else:
                 temp.next = l2
                 l2 = l2.next
-                temp = temp.next
+            temp = temp.next
     return result.next
