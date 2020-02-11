@@ -20,11 +20,9 @@ class ListNode(object):
         self.next = None
 
 
-def removeNthFromEnd(head, n):
+def two_traverse(head, n):
     """
-    :type head: ListNode
-    :type n: int
-    :rtype: ListNode
+    两次遍历法
     """
     total = 1
     curr = head
@@ -47,3 +45,36 @@ def removeNthFromEnd(head, n):
     delete = curr.next
     curr.next = delete.next
     return head
+
+
+def one_traverse(head, n):
+    """
+    一次遍历法
+    """
+    first = ListNode(0)
+    first.next = head
+    second = first
+    # first指向第 N 个节点
+    for i in range(n):
+        first = first.next
+    # second指向第 L-N 个节点
+    while first.next:
+        first = first.next
+        second = second.next
+    # 要删除的是首节点
+    if second.next == head:
+        return head.next
+    # 删除第 L-N+1 个节点
+    else:
+        second.next = second.next.next
+        return head
+
+
+def removeNthFromEnd(head, n):
+    """
+    :type head: ListNode
+    :type n: int
+    :rtype: ListNode
+    """
+    two_traverse(head, n)
+    # one_traverse(head, n)
