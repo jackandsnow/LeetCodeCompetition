@@ -17,7 +17,7 @@ class ListNode(object):
         self.next = None
 
 
-def mergeTwoLists1(self, l1, l2):
+def mergeTwoLists1(l1, l2):
     """
     迭代法，28ms
     :type l1: ListNode
@@ -40,7 +40,7 @@ def mergeTwoLists1(self, l1, l2):
     return result.next
 
 
-def mergeTwoLists2(self, l1, l2):
+def mergeTwoLists2(l1, l2):
     """
     迭代法，16ms
     :type l1: ListNode
