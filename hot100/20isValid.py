@@ -59,16 +59,14 @@ def isValid(s):
                 return False
             # 匹配栈顶左括号
             if c.__eq__(top):
-                stack.pop(-1)
+                stack.pop()
             # 不匹配就压栈
             else:
                 stack.append(c)
         else:
             stack.append(c)
-    # 栈为空，所有括号匹配
-    if not stack:
-        return True
-    return False
+    # 栈为空表示所有括号匹配
+    return not stack
 
 
 if __name__ == '__main__':
