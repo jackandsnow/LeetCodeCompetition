@@ -31,9 +31,11 @@ def ordered_insert(lists, elem):
         return [elem]
 
     for i in range(len(lists)):
+        # 寻找合适的位置插入
         if lists[i] > elem:
             lists.insert(i, elem)
             break
+        # 找不到则插入到末尾
         if i == len(lists) - 1:
             lists.append(elem)
     return lists

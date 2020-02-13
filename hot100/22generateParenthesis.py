@@ -16,7 +16,12 @@
 """
 
 
-def help(st):
+def new_insert(st):
+    """
+    在有效括号序列中插入一对新的括号
+    :param st: 有效括号序列
+    :return: 插入后的有效括号序列
+    """
     if not st:
         return {'()'}
 
@@ -34,7 +39,7 @@ def generateParenthesis(n):
     """
     result = set()
     while n > 0:
-        result = help(result)
+        result = new_insert(result)
         n -= 1
     return list(result)
 
