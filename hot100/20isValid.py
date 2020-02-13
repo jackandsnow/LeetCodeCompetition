@@ -36,8 +36,9 @@
 """
 
 
-def isValid(s):
+def isValid1(s):
     """
+    栈方法
     :type s: str
     :rtype: bool
     """
@@ -69,6 +70,19 @@ def isValid(s):
     return not stack
 
 
+def isValid2(s):
+    """
+    字符串替换法
+    :type s: str
+    :rtype: bool
+    """
+    while True:
+        if s.__contains__('()') or s.__contains__('[]') or s.__contains__('{}'):
+            s = s.replace('()', '').replace('[]', '').replace('{}', '')
+        else:
+            break
+    return not s
+
 if __name__ == '__main__':
-    ans = isValid('[()][]')
+    ans = isValid2('[()][]')
     print(ans)
