@@ -34,17 +34,21 @@ def new_insert(st):
 
 def generateParenthesis(n):
     """
+    动态规划方法
     :type n: int
     :rtype: List[str]
     """
-    result = set()
+    # 保存 i=1 to n 对括号的生成结果
+    result = []
+    temp = set()
     while n > 0:
-        result = new_insert(result)
+        temp = new_insert(temp)
+        result.append(list(temp))
         n -= 1
-    return list(result)
+    return result[-1]
 
 
 if __name__ == '__main__':
-    ans = generateParenthesis(3)
+    ans = generateParenthesis(4)
     print(ans)
     print(len(ans))
