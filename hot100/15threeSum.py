@@ -28,11 +28,11 @@ def threeSum(nums):
     nums.sort()
     result = []
     for i in range(len(nums)):
-        # 去重 nums[i]
-        if i > 0 and nums[i] == nums[i - 1]:
-            continue
         # num[i] > 0 后不会存在3个数和为0
         if nums[i] <= 0:
+            # 去重 nums[i]
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
             l, r = i + 1, len(nums) - 1
             while l < r:
                 if nums[i] + nums[l] + nums[r] < 0:
