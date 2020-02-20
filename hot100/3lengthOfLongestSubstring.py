@@ -58,7 +58,7 @@ def lengthOfLongestSubstring_opt(s):
         index = dic.get(c)
         # 当前字符在字典中，更新 start
         if index:
-            start = index
+            start = max(start, index)
         # 添加到字典中
         dic[c] = i + 1
         # 记录当前最大长度
