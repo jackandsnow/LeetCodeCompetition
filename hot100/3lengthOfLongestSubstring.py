@@ -26,6 +26,7 @@
 
 def lengthOfLongestSubstring(s):
     """
+    滑动窗口法
     :type s: str
     :rtype: int
     """
@@ -43,6 +44,28 @@ def lengthOfLongestSubstring(s):
     return max(maxn, len(temp))
 
 
+def lengthOfLongestSubstring_opt(s):
+    """
+    滑动窗口法 + 哈希字典
+    :type s: str
+    :rtype: int
+    """
+    maxn = 0
+    # 最长子串的起始位置
+    start = 0
+    dic = {}
+    for i, c in enumerate(s):
+        index = dic.get(c)
+        # 当前字符在字典中，更新 start
+        if index:
+            start = index
+        # 添加到字典中
+        dic[c] = i + 1
+        # 记录当前最大长度
+        maxn = max(maxn, i - start + 1)
+    return maxn
+
+
 if __name__ == '__main__':
-    ans = lengthOfLongestSubstring('pwwkew')
+    ans = lengthOfLongestSubstring_opt('pwwkew')
     print(ans)
