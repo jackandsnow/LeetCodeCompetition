@@ -52,6 +52,21 @@ class CQueue:
                 self.data_stack.append(last)
         return ans
 
+    def deleteHead2(self):
+        """
+        :return: int
+        """
+        if not self.data_stack and not self.delete_stack:
+            return -1
+
+        if not self.delete_stack:
+            while self.data_stack:
+                last = self.data_stack.pop()
+                self.delete_stack.append(last)
+
+        ans = self.delete_stack.pop()
+        return ans
+
 # Your CQueue object will be instantiated and called as such:
 # obj = CQueue()
 # obj.appendTail(value)
